@@ -11,32 +11,6 @@ const Tarea = ({ tarea, setTarea, setFormulario, eliminarTarea }) => {
     eliminarTarea(id);
   };
 
-  // const pImportancia = () => {
-  //   if (importancia === "Normal") {
-  //     return (
-  //       <p className="mt-1 mb-2 px-2 py-2 bg-blue-500 text-center rounded text-white font-bold">
-  //         {importancia}
-  //       </p>
-  //     );
-  //   }
-
-  //   if (importancia === "Importante") {
-  //     return (
-  //       <p className="mt-1 mb-2 px-2 py-2 bg-green-500 text-center rounded text-white font-bold">
-  //         {importancia}
-  //       </p>
-  //     );
-  //   }
-
-  //   if (importancia === "Urgente") {
-  //     return (
-  //       <p className="mt-1 mb-2 px-2 py-2 bg-red-500 text-center rounded text-white font-bold">
-  //         {importancia}
-  //       </p>
-  //     );
-  //   }
-  // };
-
   const coloresImportancia = {
     Normal: "bg-blue-500",
     Importante: "bg-green-500",
