@@ -7,17 +7,47 @@ const Tarea = ({ tarea, setTarea, setFormulario, eliminarTarea }) => {
     setFormulario(true);
   };
 
-  const handleElimintar = () => { 
+  const handleElimintar = () => {
     eliminarTarea(id);
+  };
+
+  // const pImportancia = () => {
+  //   if (importancia === "Normal") {
+  //     return (
+  //       <p className="mt-1 mb-2 px-2 py-2 bg-blue-500 text-center rounded text-white font-bold">
+  //         {importancia}
+  //       </p>
+  //     );
+  //   }
+
+  //   if (importancia === "Importante") {
+  //     return (
+  //       <p className="mt-1 mb-2 px-2 py-2 bg-green-500 text-center rounded text-white font-bold">
+  //         {importancia}
+  //       </p>
+  //     );
+  //   }
+
+  //   if (importancia === "Urgente") {
+  //     return (
+  //       <p className="mt-1 mb-2 px-2 py-2 bg-red-500 text-center rounded text-white font-bold">
+  //         {importancia}
+  //       </p>
+  //     );
+  //   }
+  // };
+
+  const coloresImportancia = {
+    Normal: "bg-blue-500",
+    Importante: "bg-green-500",
+    Urgente: "bg-red-500",
   };
 
   return (
     <div className="bg-white rounded-lg py-2 px-3 mx-auto mt-2 mr-2 shadow-lg w-full">
       <p className="font-black text-2xl break-words">{titulo}</p>
-      <p className="mt-1 mb-2 px-2 py-2 bg-red-500 text-center rounded text-white font-bold">
-        {importancia}
-      </p>
-      <p>{descripcion}</p>
+      <p className={`mt-1 mb-2 px-2 py-2 text-center rounded text-white font-bold ${coloresImportancia[importancia]}`}>{importancia}</p>
+      <p className="break-words">{descripcion}</p>
 
       <div className="flex justify-end my-3 mx-1">
         {/* Completado */}
