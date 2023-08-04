@@ -1,7 +1,16 @@
+import Filtro from "./Filtro";
 import Tarea from "./Tarea";
 
 /* eslint-disable react/prop-types */
-const Tareas = ({ tareas, setTarea, setFormulario, eliminarTarea }) => {
+const Tareas = ({
+  tareas,
+  setTarea,
+  setFormulario,
+  eliminarTarea,
+  filtro,
+  setFiltro,
+  tareasFiltradas,
+}) => {
   return (
     <div>
       {tareas && tareas.length ? (
@@ -13,17 +22,33 @@ const Tareas = ({ tareas, setTarea, setFormulario, eliminarTarea }) => {
           <p className="text-2xl text-black">
             Aprovecha tu <span className="text-green-600">tiempo</span> y hazlas
           </p>
+          <Filtro filtro={filtro} setFiltro={setFiltro} />
 
-          <div className="grid md:grid-cols-4 gap-3">
-            {tareas.map((tarea) => (
-              <Tarea key={tarea.id}
-                tarea={tarea}
-                setTarea={setTarea}
-                setFormulario={setFormulario}
-                eliminarTarea={eliminarTarea} 
-              />
-            ))}
-          </div>
+          {filtro ? (
+            <div className="grid md:grid-cols-4 gap-3">
+              {tareasFiltradas.map((tarea) => (
+                <Tarea
+                  key={tarea.id}
+                  tarea={tarea}
+                  setTarea={setTarea}
+                  setFormulario={setFormulario}
+                  eliminarTarea={eliminarTarea}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-4 gap-3">
+              {tareas.map((tarea) => (
+                <Tarea
+                  key={tarea.id}
+                  tarea={tarea}
+                  setTarea={setTarea}
+                  setFormulario={setFormulario}
+                  eliminarTarea={eliminarTarea}
+                />
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <div className="flex flex-col text-center">

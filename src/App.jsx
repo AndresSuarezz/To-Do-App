@@ -7,11 +7,22 @@ function App() {
   const [tareas, setTareas] = useState(JSON.parse(localStorage.getItem("tareas")) ?? []);
   const [tarea, setTarea] = useState({});
   const [formulario, setFormulario] = useState(false);
+
+  const [filtro, setFiltro] = useState("");
+  const [tareasFiltradas, setTareasFiltradas] = useState([])
   
   useEffect(() => {
     //Guarda
     localStorage.setItem("tareas", JSON.stringify(tareas));
   }, [tareas]);
+
+  //Filtro
+  useEffect(() => {
+    if(filtro) {
+      const filtrarTareas = tareas.filter(tarea => tarea.importancia === filtro)
+      setTareasFiltradas(filtrarTareas)
+    }
+  },[filtro])
 
   const eliminarTarea = (id) => {
     const tareaAct = tareas.filter((tarea) => tarea.id !== id);
@@ -35,6 +46,10 @@ function App() {
         setTarea={setTarea}
         setFormulario={setFormulario}
         eliminarTarea={eliminarTarea}
+
+        filtro={filtro}
+        setFiltro={setFiltro}
+        tareasFiltradas={tareasFiltradas}
       />
     </div>
   );
